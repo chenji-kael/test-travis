@@ -5,9 +5,9 @@ matrix:
   include:
   - os: linux
     services: docker
-    script: echo 1111
+    script: sh buildonlinux.sh
   - os: osx
-    script: echo 2222
+    script: sh buildonosx.sh
 
 deploy:
   provider: pages
