@@ -1,15 +1,12 @@
 sudo: required
 language: cpp
 
-os:
- - linux
- - mac
 matrix:
   include:
   - os: linux
     services: docker
     script: echo 1111
-  - os: mac
+  - os: osx
     script: echo 2222
 
 deploy:
