@@ -1,19 +1,13 @@
 sudo: required
 language: cpp
 
-services:
-  - docker
-
-os:
- - linux
- - osx
-
-before_install:
- - echo hehehehe
-
-script:
- - echo 11111
- - echo 22222
+matrix:
+  include:
+  - os: linux
+    services: docker
+    script: echo 1111
+  - os: mac
+    script: echo 2222
 
 deploy:
   provider: pages
