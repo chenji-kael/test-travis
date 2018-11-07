@@ -1,6 +1,9 @@
 sudo: required
 language: cpp
 
+os:
+ - linux
+ - mac
 matrix:
   include:
   - os: linux
