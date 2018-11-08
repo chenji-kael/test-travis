@@ -6,14 +6,21 @@ matrix:
   - os: linux
     services: docker
     script: sh buildonlinux.sh
+    deploy:
+      provider: pages
+      skip-cleanup: true
+      github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+      keep-history: true
+      on:
+        branch: master
+        tags: true
   - os: osx
     script: sh buildonosx.sh
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  on:
-    branch: master
-    tags: true
+    deploy:
+      provider: pages
+      skip-cleanup: true
+      github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+      keep-history: true
+      on:
+        branch: master
+        tags: true
