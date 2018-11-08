@@ -4,6 +4,7 @@ language: cpp
 matrix:
   include:
   - os: linux
+    sudo: required
     services: docker
     script: sh buildonlinux.sh
     deploy:
@@ -15,6 +16,7 @@ matrix:
         branch: master
         tags: true
   - os: osx
+    sudo: required
     before_install:
      - brew install qt
      - mkdir aws_build && cd aws_build && git clone --depth=1 https://github.com/aws/aws-sdk-cpp.git && cd aws-sdk-cpp && sed -i '' '/ENABLE_TESTING/s/ON/OFF/g' CMakeLists.txt && mkdir build && cd build && cmake -DBUILD_ONLY="s3" -DCMAKE_INSTALL_PREFIX="/usr" .. && make && sudo make install
