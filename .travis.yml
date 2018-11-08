@@ -16,6 +16,8 @@ matrix:
         tags: true
   - os: osx
     before_install:
+     - brew install qt
+     - brew install gnu-sed --with-default-names
      - mkdir aws_build && cd aws_build && git clone --depth=1 https://github.com/aws/aws-sdk-cpp.git && cd aws-sdk-cpp && sed -i '/ENABLE_TESTING/s/ON/OFF/g' CMakeLists.txt && mkdir build && cd build && cmake -DBUILD_ONLY="s3" -DCMAKE_INSTALL_PREFIX="/usr" .. && make && sudo make install
     script: sh buildonosx.sh
     deploy:
