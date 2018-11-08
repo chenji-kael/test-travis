@@ -18,8 +18,7 @@ matrix:
   - os: osx
     sudo: required
     before_install:
-     - brew install qt
-     - mkdir aws_build && cd aws_build && git clone --depth=1 https://github.com/aws/aws-sdk-cpp.git && cd aws-sdk-cpp && sed -i '' '/ENABLE_TESTING/s/ON/OFF/g' CMakeLists.txt && cmake -DBUILD_ONLY="s3" -DCMAKE_INSTALL_PREFIX="/usr" && make && sudo make install
+     - brew install qt aws-sdk-cpp
      - cd $TRAVIS_BUILD_DIR && git clone --depth=1 https://github.com/journeymidnight/s3util.git && pwd && cd s3util && ls && mkdir build && cd build && /usr/local/opt/qt/bin/qmake .. && make && ls    
     deploy:
       provider: pages
