@@ -18,7 +18,7 @@ matrix:
   - os: osx
     sudo: required
     before_install:
-     - brew install qt aws-sdk-cpp
+     - brew install qt aws-sdk-cpp pkg-config
      - cd $TRAVIS_BUILD_DIR && git clone --depth=1 https://github.com/journeymidnight/s3util.git && pwd && cd s3util && ls && mkdir build && cd build && /usr/local/opt/qt/bin/qmake .. && make && ls    
     deploy:
       provider: pages
