@@ -20,6 +20,7 @@ matrix:
     before_install:
      - brew install qt aws-sdk-cpp pkg-config
      - pkg-config --cflags aws-cpp-sdk-s3
+     - find / -name Aws.h
      - cd $TRAVIS_BUILD_DIR && git clone --depth=1 https://github.com/journeymidnight/s3util.git && pwd && cd s3util && ls && mkdir build && cd build && /usr/local/opt/qt/bin/qmake ..
      - ls && make   
     deploy:
