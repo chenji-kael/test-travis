@@ -18,9 +18,7 @@ matrix:
   - os: osx
     sudo: required
     before_install:
-     - brew install aws-sdk-cpp
-     - find /usr/local/Cellar/ -name *.pc
-     - brew info aws-sdk-cpp
+     - mkdir aws_build && cd aws_build && git clone --depth=1 https://github.com/aws/aws-sdk-cpp.git && cd aws-sdk-cpp && sed -i '/ENABLE_TESTING/s/ON/OFF/g' CMakeLists.txt && mkdir build && cd build && cmake -DBUILD_ONLY="s3" -DCMAKE_INSTALL_PREFIX="/usr" .. && make && sudo make install
      - pkg-config --cflags aws-sdk-cpp
      - pkg-config --cflags aws-cpp-sdk-s3
      - cd $TRAVIS_BUILD_DIR && git clone --depth=1 https://github.com/journeymidnight/s3util.git && pwd && cd s3util && ls && mkdir build && cd build && /usr/local/opt/qt/bin/qmake ..
