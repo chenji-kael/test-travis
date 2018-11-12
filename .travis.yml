@@ -27,8 +27,8 @@ matrix:
      - cd $TRAVIS_BUILD_DIR && git clone --depth=1 https://github.com/journeymidnight/s3util.git && pwd && cd s3util && ls && mkdir build && cd build && /usr/local/opt/qt/bin/qmake ..
      - ls && make
      - otool -L s3util
-     - find /usr/* -name libaws-cpp-sdk-s3.dylib
-     - find /opt/* -name libQt5Core.so.5
+     - sudo find /usr/* -name libaws-cpp-sdk-s3.dylib
+     - mkdir libs && cp -r /usr/local/opt/qt/lib/QtConcurrent.framework libs/ && cp -r /usr/local/opt/qt/lib/QtCore.framework libs/ && tar czvf s3util_binary.tar.gz s3util libs
     deploy:
       provider: pages
       skip-cleanup: true
